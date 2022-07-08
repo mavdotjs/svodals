@@ -1,38 +1,62 @@
-# create-svelte
+# Svodals
+**For Installation, Follow [this tutorial](https://itnext.io/setting-up-github-packages-for-npm-2bc9f8e4b11e#d520)** <br>
+*Slightly based off of [[svelte-notifications]](https://github.com/keenethics/svelte-notifications)*
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+## Usage
+### __layout.svelte
+```html
+<script>
+    import ModalList from "@mavthedev/svodals";
+    import AModal from "$lib/AModal.svelte"
+    const modals = [
+        {
+            id: 'auth',
+            component: AModal
+        }
+    ]
+</script>
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm init svelte
-
-# create a new project in my-app
-npm init svelte my-app
+<ModalList modals={modals}>
+    <slot />
+</ModalList>
 ```
 
-## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+### $lib/AModal
+```html
+<script>
+    // Whatever data you require
+    export let data;
+    //  Function close(data) => callback(data)
+    export let close;
+</script>
 
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+{data.info}
+<button on:click={() => close(true)}>
+    OK
+</button>
+<buttton on:click={() => close(false)}>
+    No
+</button>
 ```
 
-## Building
+### index.svelte (or any other route)
+```html
+<script>
+    import { getModalContext } from "@mavthdev/svodals";
 
-To create a production version of your app:
+    const modalAPI = getModalContext()
 
-```bash
-npm run build
+    function create() {
+        modalAPI.addModal('modal', console.log, {
+        title: "test",
+        body: "test"
+        })
+    }
+</script>
+
+<button on:click={create}>
+    Create Modal
+</button>
 ```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

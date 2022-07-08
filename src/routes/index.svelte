@@ -7,7 +7,7 @@
         modalAPI.addModal('modal', console.log, {
         title: "test",
         body: "test"
-    })
+        })
     }
 </script>
 
