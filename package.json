@@ -1,6 +1,6 @@
 {
 	"name": "@mavthedev/svodals",
-	"version": "0.0.3",
+	"version": "0.0.5",
 	"description": "Cybernatically enhanced svelte modals",
 	"repository": {
 		"url": "https://github.com/mavthedev/svodals",

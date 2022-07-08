@@ -1,5 +1,7 @@
 # Svodals
-**For Installation, Follow [this tutorial](https://itnext.io/setting-up-github-packages-for-npm-2bc9f8e4b11e#d520)** <br>
+
+`npm i @mavthedev/svodals`
+
 *Slightly based off of [[svelte-notifications]](https://github.com/keenethics/svelte-notifications)*
 
 
