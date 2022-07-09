@@ -1,0 +1,33 @@
+
+<script>
+    import { Story } from 'kitbook';
+    import { getModalContext } from "$lib";
+    import { writable } from 'svelte/store';
+
+    const returndata = writable(null)
+
+    const modalAPI = getModalContext()
+
+    function create(data) {
+        return () => {
+            modalAPI.addModal('modal', (e) => {
+                returndata.set(e)
+            }, data)
+        }
+    }
+</script>
+
+
+# Svodals Docs
+
+*Package Based off of [[svelte-notifications]](https://github.com/keenethics/svelte-notifications)*
+
+<Story name="Simple Modal Button" knobs={{ title: "Hello", body: "World!" }} let:props>
+    <button on:click={create(props)}>
+        Create Modal
+    </button>
+
+    Confirm: {$returndata}
+</Story>
+
+Modal Code Used in this example can be found [here](https://github.com/mavthedev/svodals/blob/main/src/lib/ExampleModal.svelte) and as an (untyped) svelte component in the installed package

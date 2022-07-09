@@ -1,0 +1,56 @@
+### __layout.svelte
+```html
+<script>
+    import ModalList from "@mavthedev/svodals";
+    import AModal from "$lib/AModal.svelte"
+    const modals = [
+        {
+            id: 'data',
+            component: AModal
+        }
+    ]
+</script>
+
+<ModalList modals={modals}>
+    <slot />
+</ModalList>
+```
+
+
+### $lib/AModal
+```html
+<script>
+    // Whatever data you require
+    export let data;
+    //  Function close(data) => callback(data)
+    export let close;
+</script>
+
+{data.info}
+<button on:click={() => close(true)}>
+    OK
+</button>
+<buttton on:click={() => close(false)}>
+    No
+</button>
+```
+
+### index.svelte (or any other route)
+```html
+<script>
+    import { getModalContext } from "@mavthdev/svodals";
+
+    const modalAPI = getModalContext()
+
+    function create() {
+        //                  ID      Callback    Data passed to modal
+        modalAPI.addModal("data", console.log, {
+            info: "Save Data?"
+        })
+    }
+</script>
+
+<button on:click={create}>
+    Create Modal
+</button>
+```
