@@ -1,4 +1,3 @@
-import { persist, sessionStorage } from "@macfja/svelte-persistent-store";
 import type { SvelteComponentTyped } from "svelte";
 import { writable } from "svelte/store";
 export type ModalData = {
@@ -15,6 +14,6 @@ export type ModalInit = {
 export type InitModals = Array<ModalInit>
 export type OpenModals = Array<ModalData>
 
-const openmodals = persist<OpenModals>(writable([]), sessionStorage(true), 'modals')
+const openmodals = writable<OpenModals>([])
 
 export default openmodals
