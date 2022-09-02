@@ -1,14 +1,6 @@
-<script lang="ts" context="module">
-    import { Layout } from 'kitbook';
-    import type { Load } from '@sveltejs/kit';
-    export const load: Load = () => {
-      const modules = import.meta.glob('./**/*.{md,svx}');
-      return { stuff: { kitbook: { modules, root: '/' } } };
-    };
-</script>
-
 <script>
     import "../app.css";
+    import { Layout } from 'kitbook';
     import ModalList from "$lib/ModalList.svelte";
     import ExampleModal from "$lib/ExampleModal.svelte";
     const modals = [

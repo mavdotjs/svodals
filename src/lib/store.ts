@@ -1,4 +1,4 @@
-import type { SvelteComponentTyped } from "svelte";
+// import type { SvelteComponentTyped } from "svelte";
 import { writable } from "svelte/store";
 export type ModalData = {
     data: any,
@@ -8,7 +8,7 @@ export type ModalData = {
 
 export type ModalInit = {
     id: string,
-    component: SvelteComponentTyped<{ data: any, opened: boolean }>
+    component: unknown // if anyone has a good type to use for svelte components let me know
 }
 
 export type InitModals = Array<ModalInit>
