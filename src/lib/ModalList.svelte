@@ -38,6 +38,12 @@
         }
     }
     setContext(contextkey, modalContext)
+
+    function close(id: string) {
+        return (data: any) => {
+            modalContext.closeModal(id, data)
+        }
+    }
 </script>
 
 {#each $modaldata as modal }
@@ -45,7 +51,7 @@
     {@const component = modals.find((v) => {
         return v.id == modal.id
     })?.component }
-    <svelte:component this={component} data={modal.data} close={(d) => {modalContext.closeModal(modal.id, d)}}></svelte:component>
+    <svelte:component this={component} data={modal.data} close={close(modal.id)}></svelte:component>
 {/each}
 
 <slot /> 

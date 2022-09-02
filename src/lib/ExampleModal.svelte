@@ -1,9 +1,9 @@
-<script>
+<script lang=ts>
     import { fade, scale, fly } from "svelte/transition";
     // Whatever data you require
-    export let data;
+    export let data: any;
     //  Function
-    export let close;
+    export let close: (data: any) => null
 
     const fadedata = {
         duration: 300
